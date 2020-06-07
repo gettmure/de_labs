@@ -1,0 +1,96 @@
+\RequirePackage[russian]{babel}
+\RequirePackage{graphicx}
+\RequirePackage{multicol}
+\RequirePackage{amsmath}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{adjustbox}
+
+\parindent 1.25cm
+\oddsidemargin -2.5mm
+\evensidemargin -2.5mm
+\topmargin -20mm
+
+\textwidth 16cm
+\textheight 25cm
+
+\newcommand{\dhrule}[3]{
+	{
+		\parindent 0pt
+		\rule{\textwidth}{#1}
+		
+		\vspace{\dimexpr-\baselineskip + 1mm + #3 - 1pt}
+		
+		\rule{\textwidth}{#2}
+	}
+}
+
+\newcommand{\uline}[1]{\underline{#1\vphantom{lp}}}
+
+\newcommand{\fefutitlepage}[5]{
+	
+	{
+		\parindent 0pt
+		\thispagestyle{empty}
+		
+		\begin{center}
+			
+			\includegraphics[scale=0.2]{fefulogo.pdf}
+			
+			{\fontsize{9}{9} \selectfont МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}
+			
+			{\fontsize{10}{10} \selectfont Федеральное государственное автономное образовательное учреждение высшего образования}
+			
+			\textbf{<<Дальневосточный федеральный университет>>}
+			
+			\textbf{(ДВФУ)}
+			
+			\dhrule{3pt}{1pt}{0pt}
+			
+			\textbf{ШКОЛА ЕСТЕСТВЕННЫХ НАУК}
+			
+			\vspace{10pt}
+			
+			\textbf{Кафедра информатики, математического и\linebreak компьютерного моделирования}
+			
+			\vspace{30pt}
+			
+			\textbf{ОТЧЕТ}
+			
+			\vspace{12pt}
+			{по лабораторной работе №4 \\
+			по дисциплине <<Дифференциальные уравнения>>}
+			
+		\end{center}
+	
+		\vspace{10pt}
+		
+		\begin{multicols}{2}
+			
+			\vfill\null
+			
+			\columnbreak
+			
+			Выполнил студент \newline гр. #1
+			
+			$\underset{\textit{(ФИО)}}{\uline{\text{#2}}}$
+			$\underset{\textit{(подпись)}}{\uline{\hspace{60pt}}}$
+		
+			\vspace{10pt}
+			
+			<<\uline{#3}>> \uline{#4} \uline{\hspace{2pt} #5 г.\hspace{2pt}}
+			
+		\end{multicols}
+	
+		
+		\vfill
+		\begin{center}
+			\textbf{г. Владивосток \linebreak #5}
+		\end{center}
+	
+	}
+
+	\pagebreak
+
+}
