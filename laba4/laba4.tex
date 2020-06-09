@@ -13,7 +13,7 @@
 \counterwithin*{equation}{section}
 
 \lstset{
-	basicstyle=\fontsize{9}{9}\selectfont\ttfamily
+	basicstyle=\fontsize{12}{12}\selectfont\ttfamily
 }
 
 \begin{document}
@@ -64,4 +64,54 @@
 		\begin{enumerate}
 			\item \(x^4 y'' + \left(xy' - y\right)^3 = 0; \qquad y(1) = 0, \quad y'(1) = 2i\)
 		\end{enumerate}
+		\pagebreak
+		
+	\section{Для модели «Хищник-Жертва» описать поведение решений соответствующих уравнений системы при заданных коэффициентах, построив график решения}
+		\begin{align*}
+			\begin{cases}
+				\dfrac{dx}{dt} = \left(\alpha - \beta \cdot y\right) \cdot x \\ \\				
+				\dfrac{dy}{dt} = \left(\delta \cdot x - \gamma \right) \cdot y
+			\end{cases}
+			\parbox{100pt}{\(\alpha = \gamma = 0.29\)  \\ \(\beta = \delta = 0.29\)}
+			x(0) = y(0) = 1
+		\end{align*}
+		\hspace{1cm}\includegraphics[width=15cm]{plot}
+		\pagebreak
+		
+		\begin{lstlisting}[language=Python, frame=single, gobble=5, tabsize=2]
+			import matplotlib.pyplot as plt
+			
+			def get_x(x, y, alpha, beta):
+				return (alpha - beta * y) * x
+			
+			def get_y(x, y, delta, gamma):
+				return (delta * x - gamma) * y
+			
+			def get_data(x, y, alpha, beta, delta, gamma, step):
+				data = [[], []]
+				for i in range(0, 1000000):
+					data[0].append(get_x(x, y, alpha, beta) * step + x)
+					data[1].append(get_y(x, y, delta, gamma) * step + y)
+					x = data[0][i]
+					y = data[1][i]
+				return data
+			
+			def main():
+				y = 0
+				x = 1
+				step = 0.001
+				alpha = gamma = 0.29
+				beta = delta = 0.29
+			
+				data = get_data(x, y, alpha, beta, delta, gamma, step)
+			
+				plt.plot(data[0], data[1])
+				plt.savefig('plot.png')
+				plt.close()
+			
+			if __name__ == "__main__":
+				main()
+			
+		\end{lstlisting}
+		
 \end{document}
